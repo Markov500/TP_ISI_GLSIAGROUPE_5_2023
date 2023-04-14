@@ -1,6 +1,5 @@
 package com.example.egaAPI.Entity;
 
-
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -23,18 +22,21 @@ public class Client {
     public Client() {
     }
 
-    public Client(String nom, String prenom, LocalDate dateNaissance, String sexe, String adresse, String telephone, String couriel) {
-        List<String> sexes = List.of("masculin","feminin");
+    public Client(String nom, String prenom, LocalDate dateNaissance, String sexe, String adresse, String telephone,
+            String couriel) {
+        List<String> sexes = List.of("masculin", "feminin");
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
-        if(sexes.contains(sexe.toLowerCase()))
-        {
+        if (sexes.contains(sexe.toLowerCase())) {
             this.sexe = sexe.toLowerCase();
         }
 
         this.adresse = adresse;
         this.telephone = telephone;
         this.couriel = couriel;
+    }
+
+    public void setId(Integer id2) {
     }
 }

@@ -1,7 +1,7 @@
-package com.example.egaAPI.service;
+package com.example.egaAPI.Services;
 
 import com.example.egaAPI.Entity.Client;
-import com.example.egaAPI.repository.ClientRepository;
+import com.example.egaAPI.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,18 +30,20 @@ public class ClientService {
     }
 
     // Opération de mise à jour d'un client
-    public Client updateClient(Integer id, Client client) {
-        Optional<Client> optionalClient = clientRepository.findById(id);
-        if (optionalClient.isPresent()) {
-            client.setId(id);
-            return clientRepository.save(client);
-        } else {
-            return null; // Ou lever une exception appropriée
-        }
-    }
+    
+    /*   public Client updateClient(Integer id, Client client) {
+      Optional<Client> optionalClient = clientRepository.findById(id);
+      if (optionalClient.isPresent()) {
+      client.setId(id);
+      return clientRepository.save(client);
+      } else {
+      return null; // Ou lever une exception appropriée
+      }
+      } */
+    
 
     // Opération de suppression d'un client
-    public void deleteClient(Integer id) {
+    /* public void deleteClient(Integer id) {
         clientRepository.deleteById(id);
-    }
+    } */
 }
