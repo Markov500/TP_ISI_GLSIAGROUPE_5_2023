@@ -5,18 +5,27 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @JsonProperty("nom")
     private String nom;
+    @JsonProperty("prenom")
     private String prenom;
+    //@JsonProperty("dateNaissance")
     private LocalDate dateNaissance;
+    @JsonProperty("sexe")
     private String sexe;
+    @JsonProperty("adresse")
     private String adresse;
+    @JsonProperty("telephone")
     private String telephone;
+    @JsonProperty("couriel")
     private String couriel;
 
     public Client() {
