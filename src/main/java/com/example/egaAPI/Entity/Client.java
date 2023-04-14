@@ -37,4 +37,74 @@ public class Client {
         this.telephone = telephone;
         this.couriel = couriel;
     }
+
+    //Getters
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public LocalDate getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public String getCouriel() {
+        return couriel;
+    }
+
+
+
+    //Setters
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setDateNaissance(LocalDate dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setCouriel(String couriel) {
+        this.couriel = couriel;
+    }
 }

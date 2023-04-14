@@ -79,9 +79,6 @@ public class Compte {
         this.dateCreation = dateCreation;
     }
 
-    public void setSolde(Double solde) {
-        this.solde = solde;
-    }
 
     public void setClient(Client client) {
         this.client = client;
