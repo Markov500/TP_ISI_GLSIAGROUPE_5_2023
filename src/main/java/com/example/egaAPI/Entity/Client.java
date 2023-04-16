@@ -1,6 +1,7 @@
 package com.example.egaAPI.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -11,13 +12,21 @@ import java.util.List;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
     private Integer id;
+    @JsonProperty("nom")
     private String nom;
+    @JsonProperty("prenom")
     private String prenom;
+    @JsonProperty("dateNaissance")
     private LocalDate dateNaissance;
+    @JsonProperty("sexe")
     private String sexe;
+    @JsonProperty("adresse")
     private String adresse;
+    @JsonProperty("telephone")
     private String telephone;
+    @JsonProperty("couriel")
     private String couriel;
 
     public Client() {
