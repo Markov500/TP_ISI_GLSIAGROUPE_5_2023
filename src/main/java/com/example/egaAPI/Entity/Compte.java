@@ -1,6 +1,7 @@
 package com.example.egaAPI.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -13,12 +14,17 @@ import java.util.Random;
 @Getter
 public class Compte {
     @Id
+    @JsonProperty("numCompte")
     private String numCompte;
+    @JsonProperty("typeCompte")
     private String typeCompte;
+    @JsonProperty("dateCreation")
     private LocalDate dateCreation;
+    @JsonProperty("solde")
     private Double solde;
     @ManyToOne
     @JoinColumn(name = "clientId")
+    @JsonProperty("client")
     private Client client;
 
     public Compte(String typeCompte, Client client)
