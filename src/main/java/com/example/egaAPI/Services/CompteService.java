@@ -1,7 +1,9 @@
 package com.example.egaAPI.Services;
 
 import com.example.egaAPI.Entity.Compte;
+import com.example.egaAPI.Entity.Client;
 import com.example.egaAPI.Repository.CompteRepository;
+import com.example.egaAPI.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,15 +12,26 @@ import java.util.Optional;
 
 @Service
 public class CompteService {
+    private final ClientRepository clientRepository;
+    private final CompteRepository compteRepository;
+
     @Autowired
-    private CompteRepository compteRepository;
+    public CompteService(ClientRepository clientRepository, CompteRepository compteRepository) {
+        this.clientRepository = clientRepository;
+        this.compteRepository = compteRepository;
+    }
 
     // Opération de création d'un compte
     public Compte createCompte(Compte compte) {
-        return compteRepository.save(compte);
+        Client client = compte.getClient();
+        if (client.getId() == null) {
+            clientRepository.save(client);
+        }
+        Compte realCompte = new Compte(compte.getTypeCompte(), client);
+        return compteRepository.save(realCompte);
     }
 
-    // Opération de lecture d'un compte par ID
+    // Opération de lecture d'un compte par ID(numCompte)
     public Optional<Compte> getCompteById(String numCompte) {
         return compteRepository.findById(numCompte);
     }

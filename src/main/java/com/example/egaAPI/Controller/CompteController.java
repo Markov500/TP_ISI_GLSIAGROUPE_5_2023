@@ -19,7 +19,7 @@ public class CompteController {
     private CompteService compteService;
 
     // Opération de création d'un compte
-    @PostMapping( consumes = { "application/json", "application/xml" })
+    @PostMapping
     public ResponseEntity<Compte> createCompte(@RequestBody Compte compte) {
         Compte newCompte = compteService.createCompte(compte);
         if (newCompte != null) {
