@@ -1,7 +1,9 @@
 package com.example.egaAPI.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,14 +11,20 @@ import java.util.Random;
 
 @Entity
 @Table(name = "comptes")
+@Getter
 public class Compte {
     @Id
+    @JsonProperty("numCompte")
     private String numCompte;
+    @JsonProperty("typeCompte")
     private String typeCompte;
+    @JsonProperty("dateCreation")
     private LocalDate dateCreation;
+    @JsonProperty("solde")
     private Double solde;
     @ManyToOne
     @JoinColumn(name = "clientId")
+    @JsonProperty("client")
     private Client client;
 
     public Compte(String typeCompte, Client client)
@@ -37,32 +45,8 @@ public class Compte {
     }
 
     public Compte() {
-
+        this.numCompte = _genererNumCompte();
     }
-
-
-
-//Les getters
-    public String getNumCompte() {
-        return numCompte;
-    }
-
-    public String getTypeCompte() {
-        return typeCompte;
-    }
-
-    public LocalDate getDateCreation() {
-        return dateCreation;
-    }
-
-    public Double getSolde() {
-        return solde;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
 
 
 //les setters
