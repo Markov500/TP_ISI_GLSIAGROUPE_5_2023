@@ -30,20 +30,20 @@ public class ClientService {
     }
 
     // Opération de mise à jour d'un client
-    
-    /*   public Client updateClient(Integer id, Client client) {
-      Optional<Client> optionalClient = clientRepository.findById(id);
-      if (optionalClient.isPresent()) {
-      client.setId(id);
-      return clientRepository.save(client);
-      } else {
-      return null; // Ou lever une exception appropriée
-      }
-      } */
-    
+
+    public Client updateClient(Integer id, Client client) {
+        Optional<Client> optionalClient = clientRepository.findById(id);
+        if (optionalClient.isPresent()) {
+            client.setId(id);
+            return clientRepository.save(client);
+        } else {
+            return null; // Ou lever une exception appropriée
+        }
+    }
 
     // Opération de suppression d'un client
-    /* public void deleteClient(Integer id) {
+    public boolean deleteClient(Integer id) {
         clientRepository.deleteById(id);
-    } */
+        return false;
+    }
 }

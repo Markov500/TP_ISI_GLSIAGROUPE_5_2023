@@ -53,28 +53,27 @@ public class ClientController {
     }
 
     // Opération de mise à jour d'un client
-    /*
-     * @PutMapping("/{id}")
-     * public ResponseEntity<Client> updateClient(@PathVariable Integer
-     * id, @RequestBody Client client) {
-     * Client updatedClient = clientService.updateClient(id, client);
-     * if (updatedClient != null) {
-     * return new ResponseEntity<>(updatedClient, HttpStatus.OK);
-     * } else {
-     * return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-     * }
-     * }
-     */
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Client> updateClient(@PathVariable Integer id, @RequestBody Client client) {
+        Client updatedClient = clientService.updateClient(id, client);
+        if (updatedClient != null) {
+            return new ResponseEntity<>(updatedClient, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
     // Opération de suppression d'un client
-    /*
-     * @DeleteMapping("/{id}")
-     * public ResponseEntity<HttpStatus> deleteClient(@PathVariable Integer id) {
-     * boolean result = clientService.deleteClient(id);
-     * if (result) {
-     * return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-     * } else {
-     * return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-     * }
-     * }
-     */
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteClient(@PathVariable Integer id) {
+        boolean result = clientService.deleteClient(id);
+        if (result) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
