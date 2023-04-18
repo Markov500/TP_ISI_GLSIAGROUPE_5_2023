@@ -59,9 +59,7 @@ public class Compte {
         this.typeCompte = typeCompte;
     }
 
-    public void setDateCreation(LocalDate dateCreation) {
-        this.dateCreation = dateCreation;
-    }
+   
 
 
     public void setClient(Client client) {
