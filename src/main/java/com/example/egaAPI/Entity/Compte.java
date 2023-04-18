@@ -46,6 +46,7 @@ public class Compte {
 
     public Compte() {
         this.numCompte = _genererNumCompte();
+        this.dateCreation = LocalDate.now();
     }
 
 
@@ -59,7 +60,7 @@ public class Compte {
         this.typeCompte = typeCompte;
     }
 
-   
+
 
 
     public void setClient(Client client) {
