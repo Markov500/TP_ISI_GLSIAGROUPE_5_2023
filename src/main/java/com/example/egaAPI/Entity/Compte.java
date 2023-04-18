@@ -46,7 +46,6 @@ public class Compte {
 
     public Compte() {
         this.numCompte = _genererNumCompte();
-        this.dateCreation = LocalDate.now();
     }
 
 
