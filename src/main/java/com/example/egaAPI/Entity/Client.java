@@ -3,12 +3,14 @@ package com.example.egaAPI.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "clients")
+@NoArgsConstructor
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +30,13 @@ public class Client {
     private String telephone;
     @JsonProperty("couriel")
     private String couriel;
+    @JsonProperty("nationalite")
+    private String nationalite;
 
-    public Client() {
-    }
 
-    public Client(String nom, String prenom, LocalDate dateNaissance, String sexe, String adresse, String telephone, String couriel) {
+
+
+    public Client(String nom, String prenom, LocalDate dateNaissance, String sexe, String adresse, String telephone, String couriel, String nationalite) {
         List<String> sexes = List.of("masculin","feminin");
         this.nom = nom;
         this.prenom = prenom;
@@ -45,6 +49,7 @@ public class Client {
         this.adresse = adresse;
         this.telephone = telephone;
         this.couriel = couriel;
+        this.nationalite = nationalite;
     }
 
     //Getters
