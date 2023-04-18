@@ -84,7 +84,7 @@ public class Compte {
     //Les méthodes publics
     public void depot(double montant)
     {
-        this.solde = montant;
+        this.solde += montant;
     }
 
     public boolean retrait(double montant)
@@ -93,6 +93,7 @@ public class Compte {
         {
             return false;
         }
+        this.solde -= montant;
         return true;
     }
 
