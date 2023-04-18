@@ -24,8 +24,13 @@ public class CompteService {
     // Opération de création d'un compte
     public Compte createCompte(Compte compte) {
         Client client = compte.getClient();
-        if (client.getId() == null) {
-            clientRepository.save(client);
+        Integer clientId = client.getId();
+        if (clientId == null || !clientRepository.existsById(clientId)) {
+            // Client does not exist, create new client
+            client = clientRepository.save(client);
+        } else {
+            // Client already exists, get client from database
+            client = clientRepository.getReferenceById(clientId);
         }
         Compte realCompte = new Compte(compte.getTypeCompte(), client);
         return compteRepository.save(realCompte);
