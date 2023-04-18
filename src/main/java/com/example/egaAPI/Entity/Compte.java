@@ -59,7 +59,12 @@ public class Compte {
     public void setTypeCompte(String typeCompte) {
         this.typeCompte = typeCompte;
     }
-    
+
+    public void setDateCreation(LocalDate dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+
     public void setClient(Client client) {
         this.client = client;
     }
