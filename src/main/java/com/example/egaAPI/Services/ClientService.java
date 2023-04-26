@@ -43,7 +43,13 @@ public class ClientService {
 
     // Opération de suppression d'un client
     public boolean deleteClient(Integer id) {
-        clientRepository.deleteById(id);
-        return false;
+        try {
+            clientRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
+
     }
 }
