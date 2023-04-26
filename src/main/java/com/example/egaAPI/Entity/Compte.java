@@ -2,6 +2,7 @@ package com.example.egaAPI.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Random;
 @Data
 @Entity
 @Table(name = "comptes")
+@Getter
 public class Compte {
     @Id
     private String numCompte;
@@ -44,28 +46,6 @@ public class Compte {
         this.dateCreation = LocalDate.now();
     }
 
-
-
-    //Les getters
-    public String getNumCompte() {
-        return numCompte;
-    }
-
-    public String getTypeCompte() {
-        return typeCompte;
-    }
-
-    public LocalDate getDateCreation() {
-        return dateCreation;
-    }
-
-    public Double getSolde() {
-        return solde;
-    }
-
-    public Client getClient() {
-        return client;
-    }
 
 
 
