@@ -23,11 +23,13 @@ public class CompteService {
 
     // Opération de création d'un compte
     public Compte createCompte(Compte compte) {
-        Client client = compte.getClient();
+        //Client client = compte.getClient();
+        Client client = clientRepository.findById(compte.getClient().getId()).get();
         if (client.getId() == null) {
             clientRepository.save(client);
         }
         Compte realCompte = new Compte(compte.getTypeCompte(), client);
+
         return compteRepository.save(realCompte);
     }
 
@@ -45,4 +47,44 @@ public class CompteService {
     public void deleteCompte(String numCompte) {
         compteRepository.deleteById(numCompte);
     }
+
+    public boolean faireDepot(String numCompte, Double montant){
+        var compte= getCompteById(numCompte);
+        if (compte.isPresent()){
+            var cpt= compte.get();
+            cpt.depot(montant);
+            compteRepository.save(cpt);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean faireRetrait(String numCompte, Double montant){
+        var compte= getCompteById(numCompte);
+        if (compte.isPresent()){
+            var cpt= compte.get();
+            var rep=cpt.retrait(montant);
+            if (rep){
+                compteRepository.save(cpt);
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public boolean faireVirement (String numCompte, String recepteur, Double montant){
+        var emmeteur= getCompteById(numCompte) ;
+        var destinataire= getCompteById(recepteur);
+        if (emmeteur.isPresent() && destinataire.isPresent()){
+            var cpt_emmeteur= emmeteur.get();
+            var cpt_destinataire=destinataire.get();
+            var rep=cpt_emmeteur.virement(montant, cpt_destinataire);
+            compteRepository.save(cpt_emmeteur);
+            compteRepository.save(cpt_destinataire);
+            return rep;
+        }
+        return false;
+    }
+
 }
