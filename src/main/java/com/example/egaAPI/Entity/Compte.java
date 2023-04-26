@@ -38,7 +38,7 @@ public class Compte {
         {
             this.typeCompte = typeCompte.toLowerCase();
         }
-
+        this.solde= 0.0;
         this.client = client;
 
 
@@ -47,6 +47,7 @@ public class Compte {
     public Compte() {
         this.numCompte = _genererNumCompte();
         this.dateCreation = LocalDate.now();
+        this.solde= 0.0;
     }
 
 
