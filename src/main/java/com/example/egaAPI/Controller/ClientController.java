@@ -15,12 +15,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
-
     @Autowired
     private ClientService clientService;
 
     // Opération de création d'un client
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<Client> createClient(@RequestBody Client client) {
         Client newClient = clientService.createClient(client);
         if (newClient != null) {
@@ -42,7 +41,7 @@ public class ClientController {
     }
 
     // Opération de lecture de tous les clients
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Client>> getAllClients() {
         List<Client> clients = clientService.getAllClients();
         if (!clients.isEmpty()) {

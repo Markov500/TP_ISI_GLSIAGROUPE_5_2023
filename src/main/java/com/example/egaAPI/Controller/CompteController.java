@@ -1,8 +1,8 @@
 package com.example.egaAPI.Controller;
 
 import com.example.egaAPI.Services.CompteService;
-import operation.OptCompte;
-import operation.OptVirement;
+import com.example.egaAPI.operation.OptCompte;
+import com.example.egaAPI.operation.OptVirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +21,7 @@ public class CompteController {
     private CompteService compteService;
 
     // Opération de création d'un compte
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<Compte> createCompte(@RequestBody Compte compte) {
         Compte newCompte = compteService.createCompte(compte);
         if (newCompte != null) {
@@ -43,7 +43,7 @@ public class CompteController {
     }
 
     // Opération de lecture de tous les comptes
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Compte>> getAllComptes() {
         List<Compte> comptes = compteService.getAllComptes();
         if (!comptes.isEmpty()) {
