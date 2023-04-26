@@ -1,12 +1,12 @@
 package com.example.egaAPI.Entity;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "clients")
@@ -20,7 +20,7 @@ public class Client {
     private String nom;
     @JsonProperty("prenom")
     private String prenom;
-    @JsonProperty("dateNaissance")
+    //@JsonProperty("dateNaissance")
     private LocalDate dateNaissance;
     @JsonProperty("sexe")
     private String sexe;
@@ -41,8 +41,7 @@ public class Client {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
-        if(sexes.contains(sexe.toLowerCase()))
-        {
+        if (sexes.contains(sexe.toLowerCase())) {
             this.sexe = sexe.toLowerCase();
         }
 

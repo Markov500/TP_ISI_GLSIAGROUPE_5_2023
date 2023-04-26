@@ -1,30 +1,23 @@
 package com.example.egaAPI.Entity;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
+@Data
 @Entity
 @Table(name = "comptes")
-@Getter
 public class Compte {
     @Id
-    @JsonProperty("numCompte")
     private String numCompte;
-    @JsonProperty("typeCompte")
     private String typeCompte;
-    @JsonProperty("dateCreation")
     private LocalDate dateCreation;
-    @JsonProperty("solde")
     private Double solde;
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonProperty("client")
     private Client client;
 
     public Compte(String typeCompte, Client client)
@@ -40,15 +33,40 @@ public class Compte {
         }
         this.solde= 0.0;
         this.client = client;
+        this.solde=0.0;
 
 
     }
 
     public Compte() {
-        this.numCompte = _genererNumCompte();
+        this.numCompte=_genererNumCompte();
+        this.solde=0.0;
         this.dateCreation = LocalDate.now();
-        this.solde= 0.0;
     }
+
+
+
+    //Les getters
+    public String getNumCompte() {
+        return numCompte;
+    }
+
+    public String getTypeCompte() {
+        return typeCompte;
+    }
+
+    public LocalDate getDateCreation() {
+        return dateCreation;
+    }
+
+    public Double getSolde() {
+        return solde;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
 
 
 //les setters
@@ -61,14 +79,16 @@ public class Compte {
         this.typeCompte = typeCompte;
     }
 
-
+    public void setDateCreation(LocalDate dateCreation) {
+        this.dateCreation = dateCreation;
+    }
 
 
     public void setClient(Client client) {
         this.client = client;
     }
 
-//Les méthodes privées
+    //Les méthodes privées
     private String _genererNumCompte()
     {
         Random rand = new Random();
@@ -78,7 +98,8 @@ public class Compte {
             char randomChar = (char) randomInt;
             sb.append(randomChar);
         }
-        return sb.toString() + this.dateCreation.getYear();
+        String  yaer= String.valueOf(LocalDate.now().getYear());
+        return sb.toString() +yaer ;
 
     }
 
@@ -90,12 +111,12 @@ public class Compte {
 
     public boolean retrait(double montant)
     {
-        if (montant > this.solde)
+        if (montant >= 0 && solde >= montant)
         {
-            return false;
+            this.solde -= montant;
+            return true;
         }
-        this.solde -= montant;
-        return true;
+        return false;
     }
 
     public boolean virement(double montant, Compte compteDestinataire)
