@@ -24,13 +24,13 @@ public class CompteService {
     // Opération de création d'un compte
     public Compte createCompte(Compte compte) {
         //Client client = compte.getClient();
-        Client client = clientRepository.findById(compte.getClient().getId()).get();
+       /* Client client = clientRepository.findById(compte.getClient().getId()).get();
         if (client.getId() == null) {
             clientRepository.save(client);
         }
-        Compte realCompte = new Compte(compte.getTypeCompte(), client);
+        Compte realCompte = new Compte(compte.getTypeCompte(), client);*/
 
-        return compteRepository.save(realCompte);
+        return compteRepository.save(compte);
     }
 
     // Opération de lecture d'un compte par ID(numCompte)

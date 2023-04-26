@@ -86,7 +86,14 @@ public class Compte {
     //Les méthodes publics
     public void depot(double montant)
     {
-        this.solde += montant;
+        if(montant>0)
+        {
+            this.solde += montant;
+        }
+        else{
+            this.solde -= montant;
+        }
+
     }
 
     public boolean retrait(double montant)
